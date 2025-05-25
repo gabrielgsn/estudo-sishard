@@ -1,0 +1,5 @@
+
+cd ..
+cd 02-lab-processos
+echo hello teste
+cd teste
