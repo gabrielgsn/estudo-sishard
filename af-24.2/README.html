@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>AF SisHard 24-2</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">AF SisHard 24-2</h1>
+</header>
+<!-- markdown_py README.md > README2.html -->
+<!-- pandoc README.md -f markdown -t html -s -o README.html --metadata title="AF SisHard 24-2" -->
+<h1 id="prova-final---sistemas-hardware-software">Prova Final - Sistemas
+Hardware-Software</h1>
+<p>Neste prova iremos avaliar os objetivos de aprendizagem trabalhados
+na segunda metade do curso. Cada pasta contém os arquivos de uma questão
+da prova, incluindo arquivos <code>.c</code> para vocês colocarem suas
+soluções.</p>
+<h2 id="regras-da-prova">Regras da prova</h2>
+<ol type="1">
+<li>A prova é individual. São permitidas consultas a todos os materiais
+de aula, incluindo suas soluções a exercícios de aula e labs.
+<strong>Ficam proibidas consultas a materiais de outros alunos ou
+pesquisas na Internet</strong>.</li>
+<li>Não é permitido consultar outras pessoas, sejam do Insper ou não,
+durante a prova.Não abra E-mail, Whatsapp, Discord, etc.</li>
+<li>Esta prova também avalia fluência nos conceitos estudados.</li>
+<li>A prova terá duração de <strong>três horas</strong>, com início às
+<strong>13:30</strong> e término às <strong>16:30</strong>.</li>
+<li>A avaliação da sua prova deverá ser feita pelos testes no github.
+Além disso, é obrigatório enviar o zip da prova no Blackboard.</li>
+<li>O item de entrega permite múltiplas tentativas. Sempre que terminar
+uma questão faça uma entrega completa. Isto visa minimizar problemas com
+entregas atrasadas.</li>
+<li>Sua entrega consiste na pasta da prova inteira. <strong>Rezipe e
+entregue via Blackboard</strong>.</li>
+<li>A chamada na prova será pela inicialização do proctorio e
+assinatura. Não saia sem assinar a lista.</li>
+<li>Cada questão possui um arquivo específico para resposta. Não altere
+o nome destes arquivos.</li>
+<li>Não serão tiradas dúvidas do conteúdo da disciplina durante a
+prova.</li>
+<li><strong>Fica proibido</strong> o uso de ferramentas de geração de
+código como o <strong>copilot</strong> e o uso de ferramentas de
+<strong>geração de código automático por IA</strong>
+(<strong>ChatGPT</strong>). Sujeito a código de ética.</li>
+</ol>
+<h2 id="antes-de-começar-a-resolver">Antes de começar a resolver</h2>
+<p>Cole os arquivos desta prova em seu repositório de entregas da
+disciplina, tendo estes caminhos a partir da raiz:</p>
+<ul>
+<li><code>provas/af/q1</code></li>
+<li><code>provas/af/q2</code></li>
+<li><code>provas/af/q3</code></li>
+<li><code>provas/af/q4</code></li>
+</ul>
+<p>Vamos utilizar o servidor para receber a nota em cada questão. Será
+necessário soltar releases! A correção será sequencial, ao primeiro
+problema, irá parar (ou seja, precisa resolver os problemas anteriores
+para que os próximos critérios sejam considerados).</p>
+<p>As issues já terão a sua nota no exercício. Como de costume, um
+<strong>pass</strong> significa que o servidor não encontrou problemas
+em sua solução (não que ela esteja correta!). Teremos uma fase de
+validação extra pelos professores, envolvendo, por exemplo:</p>
+<ul>
+<li>O uso de funções não permitidas poderá resultar na anulação da nota
+no exercício.</li>
+<li>Os testes pegam apenas alguns casos, garanta que sua solução
+funciona conforme o requisitado no enunciado.</li>
+<li><strong>Tentativas de burlar os testes resultarão em zero na
+prova</strong>.</li>
+<li>Se passou nos testas mas a solução está errado, a nota será
+desconsiderada.</li>
+</ul>
+<hr />
+<h2 id="questão-1-25">Questão 1 (2,5)</h2>
+<style scoped>section { font-size: 20px; }</style>
+<p>A figura <em>q1/sincronizacao.png</em> ilustra as relações de
+dependência entre as partes das funções
+<code>thread1, thread2, thread3</code> e <code>thread4</code>, mostrando
+que algumas delas poderiam ser feitas de maneira concorrente.</p>
+<p><img src="q1/sincronizacao.jpg" /></p>
+<p>Seu trabalho nesta questão será:</p>
+<ol type="1">
+<li>criar threads para execução concorrente das funções. (<strong>40% da
+nota</strong>).</li>
+<li>usar semáforos para que a ordem dos prints das partes das tarefas
+respeitem o diagrama da figura. (<strong>60% da nota</strong>).</li>
+</ol>
+<p><strong>OBS</strong>:</p>
+<ul>
+<li><p>Você não deve introduzir novas dependências. Ou seja, se seu
+programa criar relações de dependência além das da figura seu trabalho
+valerá no máximo 50%.</p></li>
+<li><p>Não altere os <code>printf</code> existentes, nem adicione
+novos.</p></li>
+<li><p><strong>Importante: Caso use variáveis globais na solução da
+questão a nota será zero (mesmo que passe nos testes).</strong></p></li>
+</ul>
+<p><strong>Como descrubro minha nota?</strong>:</p>
+<p>Será pelo corretor automático. <strong>Suba as alterações para o
+git</strong> e solte uma release:</p>
+<pre><code>git tag -a afq1.x.y -m &quot;enviando a afq1.x.y&quot;
+git push origin afq1.x.y</code></pre>
+<hr />
+<h2 id="questão-2-25">Questão 2 (2,5)</h2>
+<p>Neste exercício, o programa <code>q2</code> recebe como argumento da
+linha de comando <strong>o nome de um arquivo com senhas</strong> e um
+<strong>custo por chamada de API</strong>. Sua tarefa é chamar a nova
+versão do executável <strong><code>criptInsper</code></strong> que
+<strong>simula</strong> a recuperação de senhas contido em arquivo, e no
+final da execução, o programa <code>q2</code> calcula o gasto total com
+as chamadas da API.</p>
+<p>Exemplo de como seu programa <code>q2</code> será chamado:</p>
+<pre><code>./q2 senhas.txt 0.1</code></pre>
+<p>As senhas no arquivo <code>senhas.txt</code> serão recuperadas pelo
+executável <code>criptInsper</code>, disponível de forma compilada para
+x86 na pasta da questão.</p>
+<p>O executável <code>criptInsper</code> tem o seguinte padrão de
+chamada <code>./criptInsper arquivo 0</code> onde <code>arquivo</code>
+representa um arquivo com senhas para serem recuperadas e <code>0</code>
+representa quantas vezes você já tentou processar este arquivo. Assim na
+primeira vez que o <code>criptInsper</code> é chamado para processar o
+arquivo <code>senhas.txt</code>, devemos utilizar
+<code>./criptInsper senhas.txt 0</code>. Caso o processo falhe, então
+tentamos novamente usando <code>./criptInsper senhas.txt 1</code>. Se
+falhar mais uma vez, o uso deve ser
+<code>./criptInsper senhas.txt 2</code> e assim sucessivamente até que
+ele saia com sucesso.</p>
+<p>O executável <code>criptInsper</code> retorna <code>0</code> quando a
+chamada é feita com sucesso, ou <code>-1</code> quando recebe uma
+chamada errada (quantidade incorreta de argumentos). Você não precisa se
+preocupar com o que de fato o executável <code>criptInsper</code> faz e
+como faz, apenas considere que ele deve processar o arquivo de senhas e
+retornar um resultado (o formato do arquivo de senhas pouco importa, o
+arquivo pode nem sequer precisa existir, <strong>é tudo
+simulado</strong>).</p>
+<p>Apesar de ter sido contrato um novo programador, o
+<code>criptInsper</code> agora tem falhado além do habitual, além disso
+as vezes as chamadas ao programa <code>criptInsper</code> são
+interrompidas devido a sinais gerados pelo sistema operacional. Dessa
+forma você deve trabalhar no arquivo <code>q2.c</code> para:</p>
+<ul>
+<li>Criar um processo filho e nele, executar o <code>criptInsper</code>,
+passando para o <code>criptInsper</code> o primeiro argumento recebido
+pelo executável <code>q2</code> (que é o arquivo de senhas) e um inteiro
+com a quantidade de vezes que você já tentou recuperar as senhas no
+arquivo (na primeira vez, passe <code>0</code>, se o programa for
+finalizado por sinal, passe <code>1</code>, e assim
+sucessivamente).</li>
+<li>No proceso pai:
+<ul>
+<li>Caso o processo filho TENHA finalizado normalmente, exiba a mensagem
+<code>CRIPTINSPER TERMINOU NORMALMENTE!\n</code> (<strong>10% da
+nota</strong>).</li>
+<li>Caso o processo filho TENHA SIDO sinalizado, exiba a mensagem
+<code>CRIPTINSPER TERMINOU COM SINAL %s\n</code>, substituindo
+<code>%s</code> pelo texto que descreve o sinal. (<strong>40% da
+nota</strong>)</li>
+<li>Repita a chamada do <code>CRIPTINSPER</code> até que ele finalize
+normalmente. No final, sempre imprima o gasto total (double) no padrão
+<code>TIVEMOS UM GASTO TOTAL DE %.2f\n</code>. Aqui, lembre de atualizar
+em mais um a quantidade de vezes que você já tentou recuperar as senhas
+(<strong>50% da nota</strong>)</li>
+</ul></li>
+</ul>
+<p><strong>Atenção</strong>:</p>
+<ul>
+<li><p>Imprima EXATAMENTE conforme solicitado, sem deixar espaços antes
+ou depois das frases. Dê apenas um <code>\n</code> ao final. Por via das
+dúvidas, utilize <code>fflush(stdout)</code>.</p></li>
+<li><p>O gasto total é calculado pela <strong>quantidade de vezes que é
+preciso chamar</strong> o <code>criptInsper</code> multiplicada pelo
+<strong>custo</strong> por chamada de API.</p></li>
+<li><p>Trabalhe no arquivo <code>q2.c</code> e complete as partes
+faltantes</p></li>
+<li><p>Compile com <code>gcc -g q2.c -o q2</code></p></li>
+<li><p>Deixei um arquivo executável <code>q2_ref</code> que exemplifica
+o comportamento desejado do programa final (é um gabarito!). Teste, por
+exemplo, com <code>./q2_ref senhas.txt 0.1</code> e utilize como
+referência!</p></li>
+<li><p>O executável <code>criptInsper</code> tem comportamento
+determinístico. Se você programar corretamente e passar os argumentos
+corretamente para o <code>criptInsper</code>, deve obter as mesmas
+saídas que o <code>q2_ref</code> para as mesmas entradas.</p></li>
+</ul>
+<p><strong>Nesta questão você deverá usar as funções de gerenciamento de
+processos e chamada de executáveis vistas em aula. Você não pode, por
+exemplo, usar <code>system</code>.</strong></p>
+<p><strong>Como descrubro minha nota?</strong>:</p>
+<p>Será pelo corretor automático. <strong>Suba as alterações para o
+git</strong> e solte uma release:</p>
+<pre><code>git tag -a afq2.x.y -m &quot;enviando a afq2.x.y&quot;
+git push origin afq2.x.y</code></pre>
+<hr />
+<h2 id="questão-3-25">Questão 3 (2,5)</h2>
+<p>Nessa questão temos um arquivo texto de entrada com várias palavras
+armazenadas, em várias linhas, a sua tarefa é remover a primeira e a
+última palavra de cada linha. Considere que sempre teremos pelo menos
+duas palavras no arquivo texto e uma palavra é qualquer seguência de
+caracteres minúsculas (‘a’-‘z’) com no mínimo uma letra, as palavras são
+separadas por espaços em branco, e somente um espaço entre palavras, não
+tendo espaços em branco no início e no final da linha. Cada linha no
+arquivo é finalizada com o caractere <code>'\n'</code>. E por fim, para
+facilicitar sua implementação, considere cada linha do arquivo tem no
+máximo 100 caracteres.</p>
+<p>Por exemplo para o arquivo <code>caso1.txt</code> temos o seguinte
+conteúdo:</p>
+<pre><code>hoje tem avaliacao final de sishard
+a b
+</code></pre>
+<p>A saída do seu programa deve ser realizada para o arquivo
+<code>q3_saida.txt</code> com a primeira e a última palavra de cada
+linha eliminada.</p>
+<pre><code>hoje tem avaliacao final de
+
+</code></pre>
+<p>Note que os espaços em branco no início e no final da primeira também
+foram removidos, na segunda linha só restou um caractere
+<code>'\n'</code>.</p>
+<p>Abra o arquivo <code>q3.c</code> e veja que já tem uma parte do
+código desenvolvida, para compilar o programa use:</p>
+<pre><code>gcc  q3.c -g -o q3</code></pre>
+<p>Na execução do programa <code>q3</code> é informado o nome do arquivo
+texto conforme abaixo:</p>
+<pre><code>./q3 caso1.txt</code></pre>
+<p>Para testar sua implementação você pode usar o script abaixo:</p>
+<pre><code>./teste.sh</code></pre>
+<p>A sua tarefa nessa questão está dividida em três partes:</p>
+<ul>
+<li><p>A primeira é programar a função
+<code>char *le_linha_arquivo(int fd)</code> que retorna uma string
+contendo toda linha do arquivo texto apontado por <code>fd</code>,ao
+chegar no fim do arquivo a função dever retornar <code>NULL</code>.
+Considere que o arquivo já está aberto e deve ser fechado apenas na
+<code>main</code>. Para ler, é obrigatório utilizar apenas a chamada
+<code>read</code>, ou seja, não permito usar a função
+<code>getline</code> por exemplo. (<strong>30% da
+nota</strong>)</p></li>
+<li><p>O programa gera o arquivo <code>q3_saida.txt</code> com as linhas
+do arquivo de entrada sem a primeira e última palavras. (<strong>50% da
+nota</strong>)</p></li>
+<li><p>Programa passa no valgrind sem erros. Aqui, também será
+necessário liberar memórias alocadas na função <code>main()</code> no
+código que receberam pronto! (<strong>20% da nota</strong>, apenas se
+resolveu corretamente os itens anteriores)</p></li>
+</ul>
+<p><strong>Atenção</strong>:</p>
+<ul>
+<li><p>Dica: Para identificar possíveis erros, habilite a visualização
+de espaços em branco no VSCode, vá em
+<code>Settings-&gt;Render Whitespace-&gt;all</code>.</p></li>
+<li><p>Para manipular os arquivos, utilize APENAS as chamadas vistas em
+aula: <code>open</code>, <code>close</code>, <code>read</code>,
+<code>write</code>. Não pode utilizar <code>fopen</code>,
+<code>fdopen</code>,<code>fgets</code>, <code>fscanf</code> por exemplo.
+Também <strong>não é permitido</strong> utilizar funções da
+<code>string.h</code>. Ex: <code>strlen</code>, <code>strcpy</code>,
+<code>strchr</code>, <code>strcat</code>, <code>strrchr</code>, etc. Se
+utilizar, a nota do exexcício será zero (mesmo que passe nos
+testes).</p></li>
+<li><p>Faça seus próprios arquivos de teste personalizados!</p></li>
+</ul>
+<p><strong>Como descrubro minha nota?</strong>:</p>
+<p>A nota da questão virá pelos testes automáticos e valgrind. A análise
+visual pelo professor será apenas para confirmar que nenhuma regra foi
+quebrada! Assim faça <strong>upload das alterações para o git</strong> e
+solte uma release:</p>
+<pre><code>git tag -a afq3.x.y -m &quot;enviando a afq3.x.y&quot;
+git push origin afq3.x.y</code></pre>
+<hr />
+<h2 id="questão-4-25">Questão 4 (2,5)</h2>
+<p>Nessa questão você está encarregado de desenvolver uma aplicação, na
+linguagem C, que simule o processamento de dados de sensores em uma
+fábrica. A aplicação coleta dados de <code>N</code> sensores que
+monitoram diferentes partes da fábrica. Cada sensor primeiro coleta os
+dados de forma independente, mas só pode processar e enviar os dados,
+depois que todos os sensores tiverem coletados seus dados.</p>
+<p>No programa <code>q4.c</code> cada sensor é uma thread, representado
+pela função <code>void *sensor(void *arg)</code>, e a quantidade de
+sensores (threads) é informada por linha de comando ao programa</p>
+<p>Para compilar o programa <code>q4.c</code> você pode usar
+<code>gcc -g q4.c -o q4 -pthread</code>, e para executar
+<code>./q4 100</code>, onde <code>100</code> é a quantidade de threads
+(sensores) a serem criadas.</p>
+<p>Sua tarefa nesse exercício é:</p>
+<ul>
+<li><p>Terminar a implementação da função <code>main()</code>, criando a
+quantidade de threads informada por linha de comando e fazendo com que
+função espere para que todas as threads terminem. (<strong>30% da
+nota</strong>).</p></li>
+<li><p>Declarar e inicializar os sematóros e mutex na função
+<code>main()</code>, de forma que o sincronismo entre os sensores seja
+obdecido. O sincronismo entre sensores deve ser implementado na função
+<code>void *sensor(void *arg)</code>. Se usar variável glogal terá um
+desconto. (<strong>50% da nota</strong>).</p></li>
+<li><p>O programa passa no valgrind sem erros (<strong>20% da
+nota</strong>, apenas se resolveu corretamente os itens
+anteriores).</p></li>
+</ul>
+<p><strong>Como descrubro minha nota?</strong>:</p>
+<p>Será pelo corretor automático. <strong>Suba as alterações para o
+git</strong> e solte uma release:</p>
+<pre><code>git tag -a afq4.x.y -m &quot;enviando a afq4.x.y&quot;
+git push origin afq4.x.y</code></pre>
+</body>
+</html>
