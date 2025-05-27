@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>AF SisHard 24-1</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">AF SisHard 24-1</h1>
+</header>
+<!-- markdown_py README.md > README.html -->
+<!-- pandoc README.md -f markdown -t html -s -o README.html --metadata title="AF SisHard 24-1" -->
+<h1 id="prova-final---sistemas-hardware-software">Prova Final - Sistemas Hardware-Software</h1>
+<p>Neste prova iremos avaliar os objetivos de aprendizagem trabalhados na segunda metade do curso. Cada pasta contém os arquivos de uma questão da prova, incluindo arquivos <code>.c</code> para vocês colocarem suas soluções.</p>
+<h2 id="regras-da-prova">Regras da prova</h2>
+<ol type="1">
+<li>A prova é individual. São permitidas consultas a todos os materiais de aula, incluindo suas soluções a exercícios de aula e labs. <strong>Ficam proibidas consultas a materiais de outros alunos ou pesquisas na Internet</strong>.</li>
+<li>Não é permitido consultar outras pessoas, sejam do Insper ou não, durante a prova.Não abra E-mail, Whatsapp, Discord, etc.</li>
+<li>Esta prova também avalia fluência nos conceitos estudados.</li>
+<li>A prova terá duração de <strong>três horas</strong>, com início às <strong>13:30</strong> e término às <strong>16:30</strong>.</li>
+<li>A avaliação da sua prova deverá ser feita pelos testes no github. Além disso, é obrigatório enviar o zip da prova no Blackboard.</li>
+<li>O item de entrega permite múltiplas tentativas. Sempre que terminar uma questão faça uma entrega completa. Isto visa minimizar problemas com entregas atrasadas.</li>
+<li>Sua entrega consiste na pasta da prova inteira. <strong>Rezipe e entregue via Blackboard</strong>.</li>
+<li>A chamada na prova será pela inicialização do proctorio e assinatura. Não saia sem assinar a lista.</li>
+<li>Cada questão possui um arquivo específico para resposta. Não altere o nome destes arquivos.</li>
+<li>Não serão tiradas dúvidas do conteúdo da disciplina durante a prova.</li>
+<li>Fica proibido o uso de ferramentas de geração de código como o copilot. Sujeito a código de ética.</li>
+</ol>
+<h2 id="antes-de-começar-a-resolver">Antes de começar a resolver</h2>
+<p>Cole os arquivos desta prova em seu repositório de entregas da disciplina, tendo estes caminhos a partir da raiz:</p>
+<ul>
+<li><code>provas/af/q1</code></li>
+<li><code>provas/af/q2</code></li>
+<li><code>provas/af/q3</code></li>
+<li><code>provas/af/q4</code></li>
+</ul>
+<p>Vamos utilizar o servidor para receber a nota em cada questão. Será necessário soltar releases! A correção será sequencial, ao primeiro problema, irá parar (ou seja, precisa resolver os problemas anteriores para que os próximos critérios sejam considerados).</p>
+<p>As issues já terão a sua nota no exercício. Como de costume, um <strong>pass</strong> significa que o servidor não encontrou problemas em sua solução (não que ela esteja correta!). Teremos uma fase de validação extra pelos professores, envolvendo, por exemplo:</p>
+<ul>
+<li>O uso de funções não permitidas poderá resultar na anulação da nota no exercício.</li>
+<li>Os testes pegam apenas alguns casos, garanta que sua solução funciona conforme o requisitado no enunciado.</li>
+<li>Tentativas de burlar os testes resultarão em zero na prova.</li>
+<li>Se passou mas está errado, a nota será desconsiderada.</li>
+</ul>
+<hr />
+<h2 id="questão-1-25">Questão 1 (2,5)</h2>
+<style scoped>section { font-size: 20px; }</style>
+<p>A figura <em>q1/sincronizacao.png</em> ilustra as relações de dependência entre as partes das funções <code>thread1, thread2, thread3</code> e <code>thread4</code>, mostrando que algumas delas poderiam ser feitas de maneira concorrente.</p>
+<p><img src="q1/sincronizacao.jpg" /></p>
+<p>Seu trabalho nesta questão será:</p>
+<ol type="1">
+<li>criar threads para execução concorrente das funções. (<strong>40% da nota</strong>).</li>
+<li>usar semáforos para que a ordem dos prints das partes das tarefas respeitem o diagrama da figura. (<strong>60% da nota</strong>).</li>
+</ol>
+<p><strong>OBS</strong>:</p>
+<ul>
+<li><p>Você não deve introduzir novas dependências. Ou seja, se seu programa criar relações de dependência além das da figura seu trabalho valerá no máximo 50%.</p></li>
+<li><p>Não altere os <code>printf</code> existentes, nem adicione novos.</p></li>
+</ul>
+<p><strong>Como descrubro minha nota?</strong>:</p>
+<p>Será pelo corretor automático. Suba as alterações para o git e solte uma release:</p>
+<pre><code>git tag -a afq1.x.y -m &quot;enviando a afq1.x.y&quot;
+git push origin afq1.x.y</code></pre>
+<hr />
+<h2 id="questão-2-25">Questão 2 (2,5)</h2>
+<p>O executavel <strong><code>cURLInsper</code></strong> é uma ferramenta de linha de comando para transferir dados de um servidor, usando o protocolo http, a ferramenta funciona como interface para a biblioteca que faz o serviço pesado, o libcurl.</p>
+<p>Para fazer o download de uma URL podemos executar no terminal, por exemplo, o comando:</p>
+<pre><code>./cURLInsper https://www.ufpe.br/index.html 0 </code></pre>
+<p>No exemplo, estamos tentando fazer o download da página <code>https://www.ufpe.br/index.html/</code> onde o valor <code>0</code> representa quantas vezes você já tentou fazer o download dessa URL. Assim caso falhe o download, então temos que chamar novamente o executável usando <code>./cURLInsper https://www.ufpe.br/index.html 1</code>. Se falhar mais uma vez, o uso deve ser <code>/cURLInsper https://www.ufpe.br/index.html 2</code> e assim sucessivamente até que ele obtenha sucesso no donwload.</p>
+<p>Apesar de ter sido contrato um novo programador, o programa agora parece que tem falhado além do habitual, além disso as vezes as chamadas ao programa <code>cURLInsper</code> são interrompidas devido a sinais recebidos pelo sistema operacional.</p>
+<p>Quando a URL é baixada com sucesso o programa <strong>retorna um valor maior que <code>0</code></strong>, que representa o <strong>custo de uso da API</strong> para realizar o download. Caso falhe o donwload o programa retorna <code>-1</code> quando recebe uma chamada errada (quantidade incorreta de argumentos) e <code>-2</code> quando na tentativa de fazer o download obteve uma falha de acesso a rede. Não se preocupe se <code>cURLInsper</code> está ou não fazendo o download de uma página (a URL nem precisa exitir, é tudo simulado). De preocupe somente com os seus retornos do <code>cURLInsper</code>.</p>
+<p>Assim, o seu trabalho nesta questão é desenvolver um programa <code>q2.c</code> que recebe uma URL como parâmetro na linha de comando:</p>
+<pre><code>./q2 &lt;URL&gt;</code></pre>
+<ul>
+<li>O seu programa deve criar um processo filho e nele, executar o <code>cURLInsper</code>, passando para o <code>cURLInsper</code> o primeiro argumento recebido pelo executável <code>q2</code> (que é a URL) e um inteiro com a quantidade de vezes que você já tentou fazer o download dessa URL (na primeira vez, passe <code>0</code>, se tiver falha, passe <code>1</code>, e assim sucessivamente).</li>
+<li>No proceso pai:
+<ul>
+<li>Caso o processo filho TENHA finalizado normalmente, exiba a mensagem <code>CURLINSPER TERMINOU NORMALMENTE!\n</code>. (<strong>10% da nota</strong>)</li>
+<li>Caso o processo filho TENHA SIDO sinalizado, exiba a mensagem <code>CURLINSPER TERMINOU COM SINAL %s\n</code>, substituindo <code>%s</code> pelo texto que descreve o sinal. (<strong>20% da nota</strong>)</li>
+<li>Caso o processo filho TENHA finalizado por falha na rede, exiba a mensagem <code>FALHA NO DOWNLOAD DA URL\n</code>. (<strong>20% da nota</strong>)</li>
+<li>Repita a chamada do <code>CURLINSPER</code> (primeiro passo) até que ele finalize normalmente. Lembre de atualizar em mais um a quantidade de vezes que você já tentou fazer o download da URL. No final, imprima o custo total no padrão <code>DOWNLOAD COM SUCESSO, CUSTO TOTAL DE %d\n</code>. (<strong>50% da nota</strong>)</li>
+</ul></li>
+</ul>
+<p><strong>Atenção</strong>:</p>
+<ul>
+<li><p>Imprima EXATAMENTE conforme solicitado, sem deixar espaços antes ou depois das frases. Dê apenas um <code>\n</code> ao final. Por via das dúvidas, utilize <code>fflush(stdout)</code>.</p></li>
+<li><p>O <strong>custo total</strong> é calculado pela <strong>quantidade de vezes que é preciso chamar</strong> o <code>cURLInsper</code> multiplicada pelo <strong>custo de uso da API</strong> para fazer o download com sucesso.</p></li>
+<li><p>Trabalhe no arquivo <code>q2.c</code> e complete as partes faltantes</p></li>
+<li><p>Compile com <code>gcc -g q2.c -o q2</code></p></li>
+<li><p>Deixei um arquivo executável <code>q2_ref</code> que exemplifica o comportamento desejado do programa final (é um gabarito!). Teste, por exemplo, com <code>./q2_ref https://www.ufpe.br/index.html</code> e utilize como referência!</p></li>
+<li><p>O executável <code>cURLInsper</code> tem comportamento determinístico. Se você programar corretamente e passar os argumentos corretamente para o <code>cURLInsper</code>, deve obter as mesmas saídas que o <code>q2_ref</code> para as mesmas entradas.</p></li>
+</ul>
+<p><strong>Nesta questão você deverá usar as funções de gerenciamento de processos e chamada de executáveis vistas em aula. Você não pode, por exemplo, usar <code>system</code>.</strong></p>
+<p><strong>Como descrubro minha nota?</strong>:</p>
+<p>Será pelo corretor automático. Suba as alterações para o git e solte uma release:</p>
+<pre><code>git tag -a afq2.x.y -m &quot;enviando a afq2.x.y&quot;
+git push origin afq2.x.y</code></pre>
+<hr />
+<h2 id="questão-3-25">Questão 3 (2,5)</h2>
+<p>Nessa questão temos algumas palavras armazenadas em um arquivo texto e queremos justificá-las à direita, ou seja, alinhar todas elas à direita pelo tamanho da maior palavra. As palavras estão uma por linha no arquivo texto e contém no mínimo uma letra e no máximo 50 letras maiúsculas (‘A’-‘Z’), note que antes das palavras podem aparecer espaços em branco. Por exemplo para o arquivo <code>in04.txt</code>:</p>
+<pre><code>   LONGEST
+     A
+   LONGER
+ SHORT</code></pre>
+<p>Temos como saída o arquivo <code>q3_saida.txt</code> com o arquivo de entrada justificado à direita.</p>
+<pre><code>LONGEST
+      A
+ LONGER
+  SHORT</code></pre>
+<p>No arquivo <code>q3_saida.txt</code> as palavras devem aparecer todas alinhadas à direita e na mesma ordem da entrada, considerando o tamanho da maior palavra lida no arquivo de entrada.</p>
+<p>Abra o arquivo <code>q3.c</code> e veja que já tem uma parte do código desenvolvida, para compilar o programa use:</p>
+<pre><code>gcc  q3.c -g -o q3</code></pre>
+<p>Na execução do programa <code>q4</code> deve ser informado o número de linhas do arquivo texto e o nome do arquivo texto conforme abaixo:</p>
+<pre><code>./q4 4 in01.txt</code></pre>
+<p>Seu objetivo neste exercício é:</p>
+<ul>
+<li><p>Programar a função <code>char *le_palavra_arquivo(int fd)</code> que retorna uma string contendo a próxima palavra do arquivo apontado por <code>fd</code>. Ao chegar no fim do arquivo a função passa a retornar <code>NULL</code>. Considere que o arquivo já está aberto e deve ser fechado apenas na <code>main</code>. Para ler, é obrigatório utilizar apenas a chamada <code>read</code>, ou seja, não permito usar a função <code>getline</code> por exemplo. (<strong>30% da nota</strong>)</p></li>
+<li><p>O programa gera o arquivo <code>q3_saida.txt</code> com o arquivo de entrada justificado à direita. (<strong>50% da nota</strong>)</p></li>
+<li><p>Programa passa no valgrind sem erros. Aqui, também será necessário liberar memórias alocadas na função <code>main()</code> no código que receberam pronto! (<strong>20% da nota</strong>, apenas se resolveu corretamente os itens anteriores)</p></li>
+</ul>
+<p><strong>Atenção</strong>:</p>
+<ul>
+<li><p>Para manipular os arquivos, utilize APENAS as chamadas vistas em aula: <code>open</code>, <code>close</code>, <code>read</code>, <code>write</code>. Não pode utilizar <code>fopen</code>, <code>fdopen</code>,<code>fgets</code>, <code>fscanf</code> por exemplo. Se utilizar, a nota do ex será zero (mesmo que passe nos testes).</p></li>
+<li><p>Faça seus próprios arquivos de teste personalizados!</p></li>
+</ul>
+<p><strong>Como descrubro minha nota?</strong>:</p>
+<p>Será pelo corretor automático. Suba as alterações para o git e solte uma release:</p>
+<pre><code>git tag -a afq3.x.y -m &quot;enviando a afq3.x.y&quot;
+git push origin afq3.x.y</code></pre>
+<hr />
+<h2 id="questão-4-25">Questão 4 (2,5)</h2>
+<p>Neste exercício, vamos fazer a soma e média dos elementos de um vetor em paralelo, dividindo a carga de trabalho entre threads!</p>
+<p>O programa <code>q4</code> recebe como argumento da linha de comando <strong>uma quantidade total de threads a serem criadas</strong> e o <strong>nome de um arquivo</strong> que será redirecionado para entrada padrão.</p>
+<p>Boa parte do código já está desenvolvido, a função principal <code>main()</code>já está pronta, e está compilada e armazenada no binário <code>q4.o</code>, abaixo segue um trecho do código da função <code>main()</code>:</p>
+<pre><code>    .......
+   // inicializa variaveis globais
+    var_soma_global=0;
+    conta_threads=0;
+    // paraemtros para as threads
+    pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+    sem_t sem;
+    sem_init(&amp;sem, 0, 0);
+    id_thread = malloc(sizeof(pthread_t)*n_threads);
+    parametros = malloc(sizeof(struct soma_parcial_args)*n_threads);
+
+    for (int i = 0; i &lt; n_threads; i++) {
+        parametros[i].id_thread = i;
+        parametros[i].n_threads = n_threads;
+        parametros[i].qtd_numeros = qtd_numeros;
+        parametros[i].vetor = vetor;
+        parametros[i].mutex = &amp;mutex;
+        parametros[i].sem = &amp;sem;
+        pthread_create(&amp;id_thread[i],NULL,soma_parcial,&amp;parametros[i]);
+    }
+    for (int i = 0; i &lt; n_threads; i++){
+        pthread_join(id_thread[i],NULL);
+    }
+    printf(&quot;SOMA TOTAL: %.3lf\n&quot;, var_soma_global);
+    ......
+</code></pre>
+<p>Parte da soma dos elementos já está pronta na função <code>void *soma_parcial(void *_arg)</code> no arquivo <code>solucao.c</code>, mas infelizmente só funciona para um thread. Para gerar o executável do programa <code>q4</code> compile os arquivos da seguinte forma</p>
+<pre><code>gcc -g -Og -Wall q4.o solucao.c -o q4 -pthread</code></pre>
+<p>E para executar use:</p>
+<pre><code>./q4 1 in01.txt</code></pre>
+<p>Onde <code>1</code> é a quantidade de threads a serem criadas e <code>in01.txt</code> é o arquivo que contem na primeira linha a quantidade de números ponto flutuante no arquivo em seguida os numeros vem, um por linha.</p>
+<p>O problema é que quando tentamos rodar para duas threads ou mais threads o cáculo não funcionando, veja o resultado da execução:</p>
+<pre><code>./q4 4 in01.txt</code></pre>
+<p>Note que a média é impressa várias vezes e soma quando executado com um arquivo muito grande dá pau !!! Então, sua tarefa envolverá tratar corretamente as regiões críticas e sincronizar as threads de tal forma que somente a última thread imprima a média calculado, pois isso só pode ser feito depois que todas threads já calcularam sua soma parcial.</p>
+<p>Suas tarefas:</p>
+<ul>
+<li><p>Fazer alterações na função <code>void *soma_parcial(void *_arg)</code> para a função passe a calcular a soma corretamente com <code>N</code> threads, considere que o número de threads será sempre menor que a quantidade de números no arquivo de entrada, além disso é necessário implementar esquema de sincronização para tratar a região crítica. Para exemplificar essa necessidade execute o programa com com uma thread e depois com 4 threads para o arquivo <code>in03.txt</code> (<strong>30% da nota</strong>).</p></li>
+<li><p>Fazer alterações <code>void *soma_parcial(void *_arg)</code> para que média só seja caclulada e impressa depois que todas as threads tenham finalizado as suas somas parciais, aqui é importante que somente uma thread calcule e imprima a média, para tanto um esquema de sincronização para atender essa necessidade deve ser implementada (<strong>70% da nota</strong>).</p></li>
+</ul>
+<p><strong>IMPORTANTE</strong>: para implementar os dois esquemas de sincronização utlilize o mutex e o semáforo declarados no arquivo <code>q4.h</code> conforme abaixo e inicializado na função <code>main()</code>:</p>
+<pre><code>struct soma_parcial_args {
+    int id_thread; // indice da thread
+    int n_threads; // numero de threads
+    int qtd_numeros; // qtd numeros do arquivo de entrada
+    double *vetor; // vetor de numeros
+    // variaeis de sincronizacao das threads
+    pthread_mutex_t *mutex; 
+    sem_t  *sem;
+};</code></pre>
+<p><strong>OBS</strong>:</p>
+<ul>
+<li><p>Compile com <code>gcc -g -Og -Wall q4.o solucao.c -o q4 -pthread</code></p></li>
+<li><p>Não modifique os <code>printf()</code> e nem acrescente, deixe o prints exatamente como estão.</p></li>
+<li><p>Os cálculos e a sincronização precisam funcionar para os testes, se tiver saída apenas para burlar os testes, a questão será zerada!</p></li>
+</ul>
+<p><strong>Como descrubro minha nota?</strong>:</p>
+<p>Será pelo corretor automático. Suba as alterações para o git e solte uma release:</p>
+<pre><code>git tag -a afq4.x.y -m &quot;enviando a afq4.x.y&quot;
+git push origin afq4.x.y</code></pre>
+</body>
+</html>

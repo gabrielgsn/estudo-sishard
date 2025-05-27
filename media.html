@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo da Média Final (MF)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            max-width: 650px;
+            width: 100%;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #cc0000;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.4em;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        .input-group input[type="number"] {
+            width: calc(100% - 22px); /* Adjust for padding and border */
+            padding: 12px 10px;
+            border: 1px solid #cdd4da;
+            border-radius: 6px;
+            font-size: 1.1em;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .input-group input[type="number"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        small {
+            display: block;
+            margin-top: 5px;
+            color: #777;
+            font-size: 0.85em;
+        }
+
+        #resultado {
+            margin-top: 30px;
+            padding: 18px;
+            background-color: #e6f7ff;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #007bff;
+            border: 1px solid #b3e0ff;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #resultado.error {
+            background-color: #ffe6e6;
+            color: #dc3545;
+            border-color: #ffb3b3;
+        }
+
+        #resultado.success {
+            background-color: #e6ffe6;
+            color: #28a745;
+            border-color: #b3ffb3;
+        }
+
+        .definitions {
+            margin-top: 25px;
+            padding: 15px;
+            border: 1px dashed #a0a0a0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.6;
+        }
+        .definitions p {
+            margin: 5px 0;
+        }
+
+        .simulation-section {
+            background-color: #fdfdfd;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            max-width: 650px;
+            width: 100%;
+            margin-top: 20px;
+            box-sizing: border-box;
+            border-top: 3px solid #007bff;
+        }
+
+        .simulation-section h2 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        #simulation-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e6f2ff;
+            border-radius: 8px;
+            font-size: 1.1em;
+            color: #0056b3;
+            border: 1px solid #ccedff;
+        }
+
+        #simulation-result p {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container, .simulation-section {
+                padding: 20px 25px;
+                margin: 15px;
+            }
+            h1 {
+                font-size: 2em;
+                margin-bottom: 25px;
+            }
+            .input-group label {
+                font-size: 1em;
+            }
+            .input-group input[type="number"] {
+                padding: 10px;
+                font-size: 1em;
+            }
+            #resultado, #simulation-result {
+                font-size: 1.2em;
+                padding: 15px;
+            }
+            .simulation-section h2 {
+                font-size: 1.6em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container, .simulation-section {
+                padding: 15px 20px;
+                margin: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+            .input-group input[type="number"] {
+                padding: 8px;
+                font-size: 0.95em;
+            }
+            #resultado, #simulation-result {
+                font-size: 1.1em;
+                padding: 12px;
+            }
+            .definitions {
+                padding: 12px;
+                font-size: 0.85em;
+            }
+            .simulation-section h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cálculo da Média Final (MF)</h1>
+
+        <div class="input-group">
+            <label for="atv">Atividades (Atv):</label>
+            <input type="number" id="atv" min="0" max="10" step="0.01" placeholder="Ex: 7.5">
+        </div>
+        <div class="input-group">
+            <label for="ai">Avaliação Intermediária (AI):</label>
+            <input type="number" id="ai" min="0" max="10" step="0.01" placeholder="Ex: 6.0">
+        </div>
+        <div class="input-group">
+            <label for="lab">Laboratórios (Lab):</label>
+            <input type="number" id="lab" min="0" max="10" step="0.01" placeholder="Ex: 9.0">
+        </div>
+        <div class="input-group">
+            <label for="c">Prova Mutirão C (C):</label>
+            <input type="number" id="c" min="0" max="10" step="0.01" placeholder="Ex: 5.0">
+            <small>Este campo é opcional. Se não preenchido, será considerado 0 no cálculo do NC.</small>
+        </div>
+        <div class="input-group">
+            <label for="af">Avaliação Final (AF):</label>
+            <input type="number" id="af" min="0" max="10" step="0.01" placeholder="Preencha para calcular MF, ou deixe vazio para simular.">
+            <small>Deixe este campo vazio para simular a nota necessária para a AF.</small>
+        </div>
+
+        <div id="resultado">
+            Média Final (MF): --
+        </div>
+
+        <div class="definitions">
+            <p><strong>Atv:</strong> Atividades</p>
+            <p><strong>AI:</strong> Avaliação Intermediária</p>
+            <p><strong>AF:</strong> Avaliação Final</p>
+            <p><strong>Lab:</strong> Laboratórios</p>
+            <p><strong>C:</strong> Prova mutirão C</p>
+        </div>
+    </div>
+
+    <div class="simulation-section">
+        <h2>Simulação de Nota da Avaliação Final (AF)</h2>
+        <div class="input-group">
+            <label for="target-mf">Média Final Desejada (Ex: 6.0 para aprovação):</label>
+            <input type="number" id="target-mf" min="0" max="10" step="0.01" value="6.0" placeholder="Ex: 6.0">
+        </div>
+        <div id="simulation-result">
+            <p>Preencha as notas acima e a Média Desejada para simular a AF.</p>
+        </div>
+    </div>
+
+    <script>
+        // Funções auxiliares para obter valores e validar
+        function getInputValue(id) {
+            const element = document.getElementById(id);
+            if (element && element.value !== '') {
+                return parseFloat(element.value);
+            }
+            return NaN; // Retorna NaN se o campo estiver vazio ou não for um número
+        }
+
+        function setResult(elementId, message, type = '') {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.className = ''; // Reset classes
+            if (type) {
+                element.classList.add(type);
+            }
+        }
+
+        function calcularMedia() {
+            const atv = getInputValue('atv');
+            const ai = getInputValue('ai');
+            const af = getInputValue('af');
+            const lab = getInputValue('lab');
+            const c = getInputValue('c'); // 'C' pode ser NaN (vazio), tratado abaixo
+
+            const c_val_for_nc = isNaN(c) ? 0 : c; // C é 0 se não preenchido para cálculo de NC
+
+            const resultadoDiv = document.getElementById('resultado');
+
+            // --- Real-time Calculation for MF ---
+            // A AF não é obrigatória para a simulação, mas é para o cálculo da MF
+            if (isNaN(atv) || isNaN(ai) || isNaN(lab)) {
+                setResult('resultado', 'Preencha Atividades, Avaliação Intermediária e Laboratórios.', 'error');
+                simulateFinalExam(); // Ainda roda a simulação
+                return;
+            }
+
+            if (isNaN(af)) {
+                // Se AF está vazio, não calcula a MF mas roda a simulação
+                setResult('resultado', 'Preencha a Avaliação Final para calcular a Média Final (MF).', 'info');
+                simulateFinalExam();
+                return;
+            }
+
+            // Cálculos das médias NS e NC
+            const NS = (0.10 * atv) + (0.20 * ai) + (0.30 * af) + (0.40 * lab);
+            const NC = (0.10 * atv) + (0.20 * ai) + (0.25 * af) + (0.40 * lab) + (0.05 * c_val_for_nc);
+
+            // Verificação das CONDIÇÕES
+            const condicao1 = ((ai + af) / 2) >= 4.0; // ((AI + AF) / 2) >= 4,0 E
+            const condicao2 = ai >= 3.5;             // AI e AF >= 3,5 E (AI já está aqui)
+            const condicao3 = af >= 3.5;             // AF já está aqui
+            const condicao4 = lab >= 5.0;            // Lab >= 5,0
+
+            const todasCondicoesAtendidas = condicao1 && condicao2 && condicao3 && condicao4;
+
+            let mediaFinal;
+            let statusClass = 'info';
+
+            if (todasCondicoesAtendidas) {
+                mediaFinal = Math.max(NS, NC);
+                statusClass = (mediaFinal >= 6.0) ? 'success' : 'error'; // Ex: >= 6.0 para aprovação
+            } else {
+                let valuesToMin = [atv, ai, af, lab];
+                if (!isNaN(c)) { // Só inclui 'C' na Math.min se for um número válido
+                    valuesToMin.push(c);
+                }
+                mediaFinal = Math.min(...valuesToMin);
+                statusClass = (mediaFinal >= 6.0) ? 'success' : 'error';
+                // Adicione uma nota se a MF for calculada pelo min
+                if (mediaFinal === atv || mediaFinal === ai || mediaFinal === af || mediaFinal === lab || mediaFinal === c) {
+                     setResult('resultado', `Média Final (MF): ${mediaFinal.toFixed(2)} (Condições NÃO atendidas. MF é a menor nota.)`, statusClass);
+                     simulateFinalExam();
+                     return;
+                }
+            }
+            setResult('resultado', `Média Final (MF): ${mediaFinal.toFixed(2)}`, statusClass);
+            simulateFinalExam(); // Roda a simulação após o cálculo da MF
+        }
+
+        function simulateFinalExam() {
+            const atv = getInputValue('atv');
+            const ai = getInputValue('ai');
+            const lab = getInputValue('lab');
+            const c = getInputValue('c');
+            const targetMf = getInputValue('target-mf');
+
+            const simulationResultDiv = document.getElementById('simulation-result');
+
+            // C inválido/vazio para cálculo de NC
+            const c_val_for_nc = isNaN(c) ? 0 : c;
+
+            // Validação para simulação
+            if (isNaN(atv) || isNaN(ai) || isNaN(lab) || isNaN(targetMf)) {
+                simulationResultDiv.innerHTML = '<p>Preencha Atividades, Avaliação Intermediária, Laboratórios e a Média Final Desejada para simular.</p>';
+                return;
+            }
+
+            if (targetMf < 0 || targetMf > 10) {
+                 simulationResultDiv.innerHTML = '<p style="color:red;">Média Final Desejada deve ser entre 0 e 10.</p>';
+                 return;
+            }
+
+            let afNeededNS = (targetMf - (0.10 * atv + 0.20 * ai + 0.40 * lab)) / 0.30;
+            let afNeededNC = (targetMf - (0.10 * atv + 0.20 * ai + 0.40 * lab + 0.05 * c_val_for_nc)) / 0.25;
+
+            // Condições que AF deve atender
+            // AF >= 3.5 (condição 2 e 3)
+            // (AI + AF) / 2 >= 4.0 => AI + AF >= 8.0 => AF >= 8.0 - AI (condição 1)
+            const afNeededForConditions = Math.max(3.5, (8.0 - ai));
+
+            // AF final que garante a MF desejada, considerando as duas fórmulas (NS e NC) e as condições
+            // Pegamos o máximo, pois AF deve ser suficiente para AMBAS as fórmulas NS/NC e para as condições.
+            let afRequired = Math.max(afNeededNS, afNeededNC, afNeededForConditions);
+
+            let resultHtml = `<h3>Para alcançar ${targetMf.toFixed(2)} de Média Final:</h3>`;
+
+            if (afRequired > 10) {
+                resultHtml += `<p style="color: red;">Não é possível alcançar ${targetMf.toFixed(2)} de MF com as notas atuais, mesmo tirando 10 na AF.</p>`;
+                resultHtml += `<p>AF necessária para NS: ${afNeededNS.toFixed(2)}</p>`;
+                resultHtml += `<p>AF necessária para NC: ${afNeededNC.toFixed(2)}</p>`;
+                resultHtml += `<p>AF mínima para condições: ${afNeededForConditions.toFixed(2)}</p>`;
+            } else if (afRequired < 0) {
+                resultHtml += `<p>Você já alcança ou excede ${targetMf.toFixed(2)} de MF com as notas atuais (ou com 0 na AF).</p>`;
+                resultHtml += `<p>AF necessária: ${Math.max(0, afNeededForConditions).toFixed(2)} (considerando apenas as condições). Você provavelmente precisaria de 0 na AF ou mais para satisfazer as condições.</p>`;
+            }
+            else {
+                resultHtml += `<p>Você precisaria de <strong>${afRequired.toFixed(2)}</strong> na Avaliação Final (AF).</p>`;
+                resultHtml += `<p style="font-size: 0.9em; color: #666;">Detalhes do cálculo:</p>`;
+                resultHtml += `<p style="font-size: 0.9em; color: #666;">- AF para que NS seja ${targetMf.toFixed(2)}: ${afNeededNS.toFixed(2)}</p>`;
+                resultHtml += `<p style="font-size: 0.9em; color: #666;">- AF para que NC seja ${targetMf.toFixed(2)}: ${afNeededNC.toFixed(2)}</p>`;
+                resultHtml += `<p style="font-size: 0.9em; color: #666;">- AF mínima para atender condições (AI >= 3.5, AF >= 3.5, (AI+AF)/2 >= 4.0, Lab >= 5.0): ${afNeededForConditions.toFixed(2)}</p>`;
+            }
+
+            simulationResultDiv.innerHTML = resultHtml;
+        }
+
+        // Adicionar event listeners para cálculo em tempo real
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('input', calcularMedia);
+        });
+
+        // Chamar calcularMedia() e simulateFinalExam() no carregamento inicial para configurar o estado
+        document.addEventListener('DOMContentLoaded', () => {
+            calcularMedia();
+        });
+    </script>
+</body>
+</html>
