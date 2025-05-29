@@ -20,8 +20,25 @@ void *soma_parcial(void *_arg) {
     int qtd_leitura = qtd_nums/num_threads;
 
     double soma_parcial = 0;
+    int start = id*qtd_leitura;
+    int end = (id+1)*qtd_leitura;
 
-    for(int i = id*qtd_leitura; i<(id+1) *qtd_leitura; i++){
+    int resto = qtd_nums%num_threads;
+
+    if(resto > 0){
+        if(id < resto){
+            start += id;
+            end += id+1;
+        }
+        else{
+            start+= resto;
+            end += resto;
+        }
+    }
+
+    printf("id: %d, start: %d, end:%d\n", id, start, end);
+
+    for(int i = start; i<end; i++){
         soma_parcial += vetor[i];        
     }
 
